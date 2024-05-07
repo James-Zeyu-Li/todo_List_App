@@ -41,6 +41,12 @@ class Todo:
         self.todo_list.append(item + "\n")
         self.save_item()
 
+    def current_item(self):
+        """
+        This function return all current items in the todo_list
+        """
+        self.todo_list
+
     def show_item(self):
         """
         - this should be in view

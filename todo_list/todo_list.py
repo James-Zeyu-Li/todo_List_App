@@ -14,9 +14,14 @@ def main():
 (1:add, 2:show, 3:edit, 4:complete, 5:exit):\n").strip().lower()
 
         if user_action.startswith("add"):
-            todo = user_action[4:]
+            item = user_action[4:]
+            Todo.add_item(item)
+            Todo.save_item()
 
         elif user_action.startswith("show"):
+            items = todo.
+            for index, item in enumerate(todo_list):
+                print(f"{index+1}:{item.strip()}")
 
         elif user_action.startswith("edit"):
 
