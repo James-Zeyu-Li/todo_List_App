@@ -25,13 +25,12 @@ class Todo:
         with open(self.filename, 'w') as file:
             file.writelines(self.todo_list)
 
-    def add_item(self):
+    def add_item(self, item):
         """
         This function allow user to add a new item to the list, save to the
         file by save_item
         """
-        todo = input("Enter a Note: \n") + '\n'
-        self.todo_list.append(todo)
+        self.todo_list.append(item)
         self.save_item()
 
     def show_item(self):
@@ -44,11 +43,18 @@ class Todo:
         for index, item in enumerate(self.todo_list):
             print(f"{index+1}:{item.strip()}")
 
-    def edit_item(self):
+    def edit_item(self, index, new_item):
         """
         This function allow the user to edit an item after being added to
         the todo list
+
+        Return (boolean): true if index within the rage, false other wise
         """
+        if 0 <= index < len(self.todo_list):
+            self.todo_list[index] = new_item
+            self.save_input()
+            return True
+        return False
 
     def mark_complete(self):
         """
