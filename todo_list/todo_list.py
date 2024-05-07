@@ -5,10 +5,8 @@ from todo_model import Todo
 
 
 # edit bt use user input as index, let user input from 1 instead of 0
-number = int(input(
-    "Number of the todo item want to be edited: \n"))
-
-index_number = number - 1;
+index_number = int(input(
+    "Number of the todo item want to be edited: \n")) - 1
 
 
 def main():

@@ -48,6 +48,8 @@ class Todo:
         This function allow the user to edit an item after being added to
         the todo list
 
+        Args:
+
         Return (boolean): true if index within the rage, false other wise
         """
         if 0 <= index < len(self.todo_list):
@@ -56,8 +58,22 @@ class Todo:
             return True
         return False
 
-    def mark_complete(self):
+    def mark_complete(self, index):
         """
         This function allow user to delete/mark complete
         an item from the todo list
+
+        Args: index(int): The index of item in list to be removed.
+
+        Return:the item to be removed
+
+        Raise: IndexError if out of range.
+
         """
+        if 0 <= index < len(self.todo_list):
+            item_to_be_removed = self.todo_list.pop(index)
+            self.save_item()
+            return item_to_be_removed
+        else:
+            raise IndexError(
+                f"The index is out of range, 0 - {len(self.todo_list)}")
