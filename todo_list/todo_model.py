@@ -17,14 +17,22 @@ class Todo:
         self.todo_list = []
         self.load_items()
 
+    def save_item(self):
+        """
+        Save user input after add item, edit and mark complete so the code
+        won't duplicate.
+        """
+        with open(self.filename, 'w') as file:
+            file.writelines(self.todo_list)
+
     def add_item(self):
         """
-        This function allow user to add a new item to the list
+        This function allow user to add a new item to the list, save to the
+        file by save_item
         """
         todo = input("Enter a Note: \n") + '\n'
         self.todo_list.append(todo)
-        with open(self.filename, 'w') as file:
-            file.writelines(self.todo_list)
+        self.save_item()
 
     def show_item(self):
         """
