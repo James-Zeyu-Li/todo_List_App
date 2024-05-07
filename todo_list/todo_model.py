@@ -17,6 +17,14 @@ class Todo:
         self.todo_list = []
         self.load_items()
 
+    def load_items(self):
+        """
+        read the file and check if there are any items already in the txt,
+        if so, add it to the list.
+        """
+        with open('todo_list/todo_list.txt', 'r') as file:
+            self.todo_list = file.readlines()
+
     def save_item(self):
         """
         Save user input after add item, edit and mark complete so the code
@@ -30,7 +38,7 @@ class Todo:
         This function allow user to add a new item to the list, save to the
         file by save_item
         """
-        self.todo_list.append(item)
+        self.todo_list.append(item + "\n")
         self.save_item()
 
     def show_item(self):
@@ -53,7 +61,7 @@ class Todo:
         Return (boolean): true if index within the rage, false other wise
         """
         if 0 <= index < len(self.todo_list):
-            self.todo_list[index] = new_item
+            self.todo_list[index] = new_item + "/n"
             self.save_input()
             return True
         return False

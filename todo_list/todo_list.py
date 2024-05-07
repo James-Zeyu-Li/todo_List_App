@@ -4,13 +4,29 @@ This is a practice project to create a to do list application using python.
 from todo_model import Todo
 
 
-# edit bt use user input as index, let user input from 1 instead of 0
-index_number = int(input(
-    "Number of the todo item want to be edited: \n")) - 1
-
-
 def main():
-    return 0
+
+    status = "running"
+
+    while status != "exit":
+        user_action = input(
+            "Enter an action \
+(1:add, 2:show, 3:edit, 4:complete, 5:exit):\n").strip().lower()
+
+        if user_action.startswith("add"):
+            todo = user_action[4:]
+
+        elif user_action.startswith("show"):
+
+        elif user_action.startswith("edit"):
+
+        elif user_action.startswith("complete"):
+
+        elif user_action.startswith("exit"):
+            status = "exit"
+
+        else:
+            print("Invalid enter, please enter (add, show, or exit)")
 
 
 if __name__ == "__main__":
