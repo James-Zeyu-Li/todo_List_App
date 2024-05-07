@@ -17,3 +17,25 @@ class Todo:
         self.todo_list = []
         self.load_items()
 
+    def add_item(self):
+        """
+        This function allow user to add a new item to the list
+        """
+
+    def show_item(self):
+        """
+        This function show all the item in the todo list with a index number
+        in the beginning
+        """
+
+    def edit_item(self):
+        """
+        This function allow the user to edit an item after being added to
+        the todo list
+        """
+
+    def mark_complete(self):
+        """
+        This function allow user to delete/mark complete
+        an item from the todo list
+        """
