@@ -21,6 +21,10 @@ class Todo:
         """
         This function allow user to add a new item to the list
         """
+        todo = input("Enter a Note: \n") + '\n'
+        self.todo_list.append(todo)
+        with open(self.filename, 'w') as file:
+            file.writelines(self.todo_list)
 
     def show_item(self):
         """
