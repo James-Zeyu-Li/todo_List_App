@@ -47,16 +47,6 @@ class Todo:
         """
         self.todo_list
 
-    def show_item(self):
-        """
-        - this should be in view
-
-        This function show all the item in the todo list with a index number
-        in the beginning
-        """
-        for index, item in enumerate(self.todo_list):
-            print(f"{index+1}:{item.strip()}")
-
     def edit_item(self, index, new_item):
         """
         This function allow the user to edit an item after being added to

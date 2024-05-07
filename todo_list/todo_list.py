@@ -19,8 +19,8 @@ def main():
             Todo.save_item()
 
         elif user_action.startswith("show"):
-            items = todo.
-            for index, item in enumerate(todo_list):
+            items = Todo.current_item()
+            for index, item in enumerate(items):
                 print(f"{index+1}:{item.strip()}")
 
         elif user_action.startswith("edit"):
