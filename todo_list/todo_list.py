@@ -24,8 +24,24 @@ def main():
                 print(f"{index+1}:{item.strip()}")
 
         elif user_action.startswith("edit"):
+            # try:
+            #     index = int(user_action[5:]) - 1
+            #     new_item = input(
+            #         f"Change {todo_list[number].strip()} to: ") + '\n'
+            #     Todo.edit_item(index)
+            # except
 
         elif user_action.startswith("complete"):
+            try:
+                item_number = int(user_action[9:])
+                index_number = item_number - 1
+                removed_item = Todo.mark_complete(index_number)
+                message = (
+                    f"{item_number} {removed_item} was removed from the list")
+                print(message)
+            except IndexError:
+                print("The number of item you entered does not exist")
+                continue
 
         elif user_action.startswith("exit"):
             status = "exit"
