@@ -36,9 +36,13 @@ class Todo:
 
     def show_item(self):
         """
+        - this should be in view
+
         This function show all the item in the todo list with a index number
         in the beginning
         """
+        for index, item in enumerate(self.todo_list):
+            print(f"{index+1}:{item.strip()}")
 
     def edit_item(self):
         """
