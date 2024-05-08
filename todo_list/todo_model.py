@@ -45,7 +45,7 @@ class Todo:
         """
         This function return all current items in the todo_list
         """
-        self.todo_list
+        return self.todo_list
 
     def edit_item(self, index, new_item):
         """
@@ -53,11 +53,12 @@ class Todo:
         the todo list
 
         Args:
+            index: the index of item that the user wants to update.
+            new_item: what the user wants to update the item to.
 
         Return (boolean): true if index within the rage, false other wise
         """
         if 0 <= index < len(self.todo_list):
-            new_item = input()
             self.todo_list[index] = new_item + "/n"
             self.save_input()
             return True
