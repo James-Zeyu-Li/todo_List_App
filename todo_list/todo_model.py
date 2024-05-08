@@ -27,10 +27,19 @@ class Todo:
         """
         if not os.path.exists(self.filename):
             self.todo_list = []
-            self.save_item()
         else:
-            with open('todo_list/todo_list.txt', 'r') as file:
+            with open(self.filename, 'r') as file:
                 self.todo_list = file.readlines()
+
+    @staticmethod
+    def check_end_of_line(item):
+        """
+        if the item ends with new line character, no duplicate  character added
+        """
+        if item.endswith('\n'):
+            return item
+        else:
+            return item + '\n'
 
     def save_item(self):
         """
@@ -38,7 +47,8 @@ class Todo:
         won't duplicate.
         """
         with open(self.filename, 'w') as file:
-            file.writelines(self.todo_list)
+            file.writelines(self.check_end_of_line(item)
+                            for item in self.todo_list)
 
     def add_item(self, item):
         """
@@ -66,8 +76,8 @@ class Todo:
         Return (boolean): true if index within the rage, false other wise
         """
         if 0 <= index < len(self.todo_list):
-            self.todo_list[index] = new_item + "\n"
-            self.save_input()
+            self.todo_list[index] = new_item
+            self.save_item()
             return True
         return False
 

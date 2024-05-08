@@ -25,12 +25,13 @@ def main():
 
         elif user_action.startswith("edit"):
             try:
-                index = int(user_action[5:]) - 1
+                user_input = int(user_action[5:])
+                index = (user_input - 1)
 
                 items = todo.current_item()
                 if 0 <= index < len(items):
                     new_item = input(
-                        f"Change {items[index+1].strip()} to: ") + '\n'
+                        f"Change {items[index].strip()} to: ") + '\n'
                     todo.edit_item(index, new_item)
                 else:
                     print(
@@ -46,8 +47,11 @@ def main():
                 index_number = item_number - 1
                 removed_item = todo.mark_complete(index_number)
                 message = (
-                    f"{item_number} {removed_item} was removed from the list")
+                    f"{item_number} {removed_item.strip()} is removed")
                 print(message)
+            except ValueError:
+                print("The entry is not valid, complete (item_number)")
+                continue
             except IndexError:
                 print("The number of item you entered does not exist")
                 continue
