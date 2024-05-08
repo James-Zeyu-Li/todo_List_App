@@ -1,7 +1,7 @@
 """
 This is a practice project to create a to do list application using python.
 """
-from todo_model import Todo
+from model.todo_model import Todo
 
 
 def main():
@@ -47,7 +47,7 @@ def main():
                 index_number = item_number - 1
                 removed_item = todo.mark_complete(index_number)
                 message = (
-                    f"{item_number} {removed_item.strip()} is removed")
+                    f"Item #{item_number} '{removed_item.strip()}' is removed")
                 print(message)
             except ValueError:
                 print("The entry is not valid, complete (item_number)")

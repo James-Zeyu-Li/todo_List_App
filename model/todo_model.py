@@ -8,7 +8,7 @@ class Todo:
     save the todo list items in a txt file and read from the file
     """
 
-    def __init__(self, filename='todo_list/todo_list.txt'):
+    def __init__(self, filename="todo_list/todo_list.txt"):
         """
         initiate a todo list to load from the assigned txt file
 
@@ -19,17 +19,23 @@ class Todo:
         self.filename = filename
         self.todo_list = []
         self.load_items()
+        self.file_directory_check()
+
+    def file_directory_check(self):
+        directory = os.path.dirname(self.filename)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
 
     def load_items(self):
         """
         read the file and check if there are any items already in the txt,
         if so, add it to the list.
         """
-        if not os.path.exists(self.filename):
-            self.todo_list = []
-        else:
+        if os.path.exists(self.filename):
             with open(self.filename, 'r') as file:
                 self.todo_list = file.readlines()
+        else:
+            self.todo_list = []
 
     @staticmethod
     def check_end_of_line(item):
@@ -79,7 +85,8 @@ class Todo:
             self.todo_list[index] = new_item
             self.save_item()
             return True
-        return False
+        else:
+            return False
 
     def mark_complete(self, index):
         """
