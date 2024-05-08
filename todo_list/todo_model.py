@@ -1,3 +1,6 @@
+import os
+
+
 class Todo:
     """
     This is a class for the todo list which allow basic functionalities for users to
@@ -22,8 +25,12 @@ class Todo:
         read the file and check if there are any items already in the txt,
         if so, add it to the list.
         """
-        with open('todo_list/todo_list.txt', 'r') as file:
-            self.todo_list = file.readlines()
+        if not os.path.exists(self.filename):
+            self.todo_list = []
+            self.save_item()
+        else:
+            with open('todo_list/todo_list.txt', 'r') as file:
+                self.todo_list = file.readlines()
 
     def save_item(self):
         """
@@ -59,7 +66,7 @@ class Todo:
         Return (boolean): true if index within the rage, false other wise
         """
         if 0 <= index < len(self.todo_list):
-            self.todo_list[index] = new_item + "/n"
+            self.todo_list[index] = new_item + "\n"
             self.save_input()
             return True
         return False
