@@ -57,7 +57,7 @@ class Todo:
         Return (boolean): true if index within the rage, false other wise
         """
         if 0 <= index < len(self.todo_list):
-            new_item = input("")
+            new_item = input()
             self.todo_list[index] = new_item + "/n"
             self.save_input()
             return True

@@ -24,12 +24,21 @@ def main():
                 print(f"{index+1}:{item.strip()}")
 
         elif user_action.startswith("edit"):
-            # try:
-            #     index = int(user_action[5:]) - 1
-            #     new_item = input(
-            #         f"Change {todo_list[number].strip()} to: ") + '\n'
-            #     Todo.edit_item(index)
-            # except
+            try:
+                index = int(user_action[5:]) - 1
+
+                items = Todo.current_item()
+                if 0 <= index < len(items):
+                    new_item = input(
+                        f"Change {items[index+1].strip()} to: ") + '\n'
+                    Todo.edit_item(index, new_item)
+                else:
+                    print(
+                        f"The number must be between 1 and {len(items)}")
+
+            except ValueError:
+                print("The entry is not valid, edit (item_number)")
+                continue
 
         elif user_action.startswith("complete"):
             try:
