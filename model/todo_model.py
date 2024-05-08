@@ -1,10 +1,15 @@
+"""
+This will be the model file for the todo list application. 
+File will communicate with view through controller.
+"""
+
 import os
 
 
 class Todo:
     """
-    This is a class for the todo list which allow basic functionalities for users to
-    adds, show edits, remove items from the to do list
+    This is a class for the todo list which allow basic functionalities for 
+    users to adds, show edits, remove items from the to do list
     save the todo list items in a txt file and read from the file
     """
 
@@ -22,6 +27,9 @@ class Todo:
         self.file_directory_check()
 
     def file_directory_check(self):
+        """
+        Check if the path and filename exists, if not, create the path.
+        """
         directory = os.path.dirname(self.filename)
         if not os.path.exists(directory):
             os.makedirs(directory)
