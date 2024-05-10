@@ -1,1 +1,2 @@
-this test node 1
+test node 1
+test note 2

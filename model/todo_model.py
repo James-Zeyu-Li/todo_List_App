@@ -1,9 +1,9 @@
 """
-This will be the model file for the todo list application. 
+This will be the model file for the todo list application.
 File will communicate with view through controller.
 """
-
 import os
+FILEPATH = "todo_list/todo_list.txt"
 
 
 class Todo:
@@ -13,7 +13,7 @@ class Todo:
     save the todo list items in a txt file and read from the file
     """
 
-    def __init__(self, filename="todo_list/todo_list.txt"):
+    def __init__(self, filename=FILEPATH):
         """
         initiate a todo list to load from the assigned txt file
 
