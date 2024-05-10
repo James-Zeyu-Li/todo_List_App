@@ -1,2 +1,0 @@
-test node 1
-test note 2

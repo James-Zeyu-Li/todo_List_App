@@ -3,6 +3,7 @@ This will be the model file for the todo list application.
 File will communicate with view through controller.
 """
 import os
+
 FILEPATH = "todo_list/todo_list.txt"
 
 
@@ -22,9 +23,9 @@ class Todo:
                             the designated file location.
         """
         self.filename = filename
-        self.todo_list = []
-        self.load_items()
+        # self.todo_list = []
         self.file_directory_check()
+        self.todo_list = self.load_items()
 
     def file_directory_check(self):
         """
@@ -41,9 +42,9 @@ class Todo:
         """
         if os.path.exists(self.filename):
             with open(self.filename, 'r') as file:
-                self.todo_list = file.readlines()
+                return [line.strip() + '\n' for line in file]
         else:
-            self.todo_list = []
+            return []
 
     @staticmethod
     def check_end_of_line(item):
@@ -78,6 +79,8 @@ class Todo:
         """
         This function return all current items in the todo_list
         """
+        if not self.todo_list:
+            return []
         return self.todo_list
 
     def edit_item(self, index, new_item):
@@ -91,8 +94,10 @@ class Todo:
 
         Return (boolean): true if index within the rage, false other wise
         """
+        if not isinstance(new_item, str):
+            raise TypeError("New item must be string")
         if 0 <= index < len(self.todo_list):
-            self.todo_list[index] = new_item
+            self.todo_list[index] = new_item + "\n"
             self.save_item()
             return True
         else:
