@@ -69,6 +69,8 @@ class Todo:
         This function allow user to add a new item to the list, save to the
         file by save_item
         """
+        if not isinstance(item, str):
+            raise TypeError("Item entered must be string")
         self.todo_list.append(item + "\n")
         self.save_item()
 
@@ -108,6 +110,8 @@ class Todo:
         Raise: IndexError if out of range.
 
         """
+        if not isinstance(index, int):
+            raise ValueError("Index must be an integer")
         if 0 <= index < len(self.todo_list):
             item_to_be_removed = self.todo_list.pop(index)
             self.save_item()
