@@ -1,7 +1,8 @@
 """
 This is a practice project to create a to do list application using python.
 """
-from model.todo_model import Todo
+from todo_List_App.model.todo_model import Todo
+import time
 
 
 def main():
@@ -9,6 +10,9 @@ def main():
     try:
         status = "running"
         todo = Todo()
+
+        now = time.strftime("%b %d, %Y %H:%M:%S")
+        print(f"Welcome to the To Do List Application\n{now}")
 
         while status != "exit":
             user_action = input(
