@@ -23,7 +23,6 @@ class Todo:
                             the designated file location.
         """
         self.filename = filename
-        # self.todo_list = []
         self.file_directory_check()
         self.todo_list = self.load_items()
 
@@ -79,8 +78,6 @@ class Todo:
         """
         This function return all current items in the todo_list
         """
-        if not self.todo_list:
-            return []
         return self.todo_list
 
     def edit_item(self, index, new_item):
