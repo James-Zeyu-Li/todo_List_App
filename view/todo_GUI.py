@@ -51,6 +51,10 @@ class TodoGUI(QWidget):
         self.edit_button.clicked.connect(self.edit_item)
         self.main_layout.addWidget(self.edit_button)
 
+        # Complete button
+        self.complete_button = QPushButton("Complete", self)
+        self.complete_button.clicked.connect(self.mark_complete)
+        self.main_layout.addWidget(self.complete_button)
         self.setLayout(self.main_layout)
 
     def add_item(self):
@@ -81,7 +85,16 @@ class TodoGUI(QWidget):
         else:
             self.show_error("No item selected.")
 
-
+    def mark_complete(self):
+        """
+        Mark an item in the todo list as complete.
+        """
+        selected_item = self.listbox.currentRow()
+        if selected_item != -1:
+            self.controller.mark_complete(selected_item)
+            self.refresh_items()
+        else:
+            self.show_error("No item selected.")
 
     def show_items(self, items):
         """
