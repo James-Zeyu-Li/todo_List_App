@@ -110,8 +110,8 @@ class TodoGUI(QWidget):
         """
         items = self.controller.show_items()
         self.listbox.clear()
-        for item in items:
-            self.listbox.addItem(item)
+        for index, item in enumerate(items):
+            self.listbox.addItem(f"{index + 1}: {item}")
 
     def show_items(self, items):
         """
