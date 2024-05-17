@@ -72,9 +72,18 @@ todo-list-app/
 └── README.md                # Project documentation
 ```
 
-#### Usage
+## Usage
 - Launch the application by running main.py or the generated executable.
 - Enter your to-do item in the input box and click "Add".
 - To edit an item, select it from the list and click "Edit".
 - To mark an item as complete, select it from the list and click "Complete".
 - The list of to-do items will be saved to and loaded from todo_list.txt.
+
+## Acknowledgments
+
+- Thanks to the [PyQt5](https://www.riverbankcomputing.com/software/pyqt/intro) project for providing the GUI framework.
+- Appreciation to OpenAI's ChatGPT, which was instrumental in helping debug code, generate documentation, and provide coding insights throughout the development of this application.
+
+## Tools Used
+- **Udemy:** project inspired by `Python Mega Course: Learn Python in 60 Days`
+- **OpenAI ChatGPT:** Used for coding assistance, debugging tips, and documentation generation.
