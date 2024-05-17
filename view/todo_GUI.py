@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout,
                              QLabel, QPushButton, QLineEdit, QHBoxLayout,
-                             QListWidget)
+                             QListWidget, QInputDialog)
 
 
 class TodoGUI(QWidget):
@@ -46,6 +46,11 @@ class TodoGUI(QWidget):
         self.listbox = QListWidget(self)
         self.main_layout.addWidget(self.listbox)
 
+        # Edit button
+        self.edit_button = QPushButton("Edit", self)
+        self.edit_button.clicked.connect(self.edit_item)
+        self.main_layout.addWidget(self.edit_button)
+
         self.setLayout(self.main_layout)
 
     def add_item(self):
@@ -59,6 +64,22 @@ class TodoGUI(QWidget):
             self.refresh_items()
         else:
             self.show_error("Item cannot be empty.")
+
+    def edit_item(self):
+        """
+        Edit an existing item in the todo list.
+        """
+        selected_item = self.listbox.currentRow()
+        if selected_item != -1:
+            current_text = self.controller.model.current_item()[
+                selected_item].strip()
+            new_item, ok = QInputDialog.getText(
+                self, "Edit Item", "Enter new item text:", text=current_text)
+            if ok and new_item:
+                self.controller.edit_item(selected_item, new_item)
+                self.refresh_items()
+        else:
+            self.show_error("No item selected.")
 
     def run(self):
         """
