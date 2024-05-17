@@ -1,10 +1,13 @@
 """
 This is a practice project to create a to do list application using python.
 """
+from typing import Optional
+from model.todo_model import Todo
+from view.todo_GUI import TodoGUI
 
 
 class TodoController:
-    def __init__(self, model, view):
+    def __init__(self, model: Todo, view: Optional[TodoGUI] = None):
         self.model = model
         self.view = view
 
@@ -13,7 +16,10 @@ class TodoController:
         Update the view to display the current items in the todo list.
         """
         items = self.model.current_item()
-        self.view.show_items(items)
+        if self.view is not None:
+            self.view.show_items(items)
+        else:
+            raise ValueError("View is not set in the controller.")
 
     def add_item(self, item=None):
         """
@@ -23,21 +29,29 @@ class TodoController:
             item (str): The item to add.
         """
         if item is None:
-            item = self.view.get_item_text()
+            if self.view is not None:
+                item = self.view.get_item_text()
+            else:
+                raise ValueError("View is not set in the controller.")
+
         if item.strip():
             self.model.add_item(item)
-            self.view.clear_item_text()
-            self.update_view()
+            if self.view is not None:
+                self.view.clear_item_text()
+                self.update_view()
         else:
-            self.view.show_error("Item cannot be empty.")
+            if self.view is not None:
+                self.view.show_error("Item cannot be empty.")
+            else:
+                raise ValueError("View not set in controller")
 
-    def show_item(self):
+    def show_items(self):
         """
         Show all current items in the todo list.
         """
         items = self.model.current_item()
         if items is not None:
-            self.view.show_items(items)
+            return items
         else:
             return []
 
@@ -52,7 +66,8 @@ class TodoController:
         if self.model.edit_item(index, new_item):
             self.update_view()
         else:
-            self.view.display_error("Index out of range")
+            if self.view is not None:
+                self.view.show_error("Index out of range")
 
     def mark_complete(self, index):
         """
@@ -68,4 +83,7 @@ class TodoController:
         """
         run the application
         """
-        self.view.run()
+        if self.view is not None:
+            self.view.run()
+        else:
+            raise ValueError("View is not set in the controller.")

@@ -9,7 +9,7 @@ FILEPATH = "todo_list/todo_list.txt"
 
 class Todo:
     """
-    This is a class for the todo list which allow basic functionalities for 
+    This is a class for the todo list which allow basic functionalities for
     users to adds, show edits, remove items from the to do list
     save the todo list items in a txt file and read from the file
     """
