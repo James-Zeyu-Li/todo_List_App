@@ -57,6 +57,11 @@ class TodoGUI(QWidget):
         self.main_layout.addWidget(self.complete_button)
         self.setLayout(self.main_layout)
 
+        # Exit button
+        self.exit_button = QPushButton("Exit", self)
+        self.exit_button.clicked.connect(self.close_application)
+        self.main_layout.addWidget(self.exit_button)
+
         self.setLayout(self.main_layout)
         self.refresh_items()
 
