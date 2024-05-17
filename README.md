@@ -82,7 +82,7 @@ todo-list-app/
 ## Acknowledgments
 
 - Thanks to the [PyQt5](https://www.riverbankcomputing.com/software/pyqt/intro) project for providing the GUI framework.
-- Appreciation to OpenAI's ChatGPT, which was instrumental in helping debug code, generate documentation, and provide coding insights throughout the development of this application.
+- Thanks to ChatGPT, which helped in learn PyQt5, helped in problem solving, and generated documentation for this practice.
 
 ## Tools Used
 - **Udemy:** project inspired by `Python Mega Course: Learn Python in 60 Days`
