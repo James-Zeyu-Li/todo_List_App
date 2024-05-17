@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout,
-                             QLabel, QPushButton, QLineEdit, QListWidget,
-                             QMessageBox, QInputDialog)
+                             QLabel, QPushButton, QLineEdit)
 
 
 class TodoGUI(QWidget):
@@ -26,3 +25,31 @@ class TodoGUI(QWidget):
         # Label
         self.label = QLabel("Welcome to the To Do List Application")
         self.main_layout.addWidget(self.label)
+
+        # Input box
+        self.input_box = QLineEdit(self)
+        self.input_box.setPlaceholderText("Enter your todo item here:")
+        self.main_layout.addWidget(self.input_box)
+
+        # Add button
+        self.add_button = QPushButton("Add", self)
+        self.add_button.clicked.connect(self.add_item)
+        self.main_layout.addWidget(self.add_button)
+
+    def add_item(self):
+        """
+        Add a new item to the todo list.
+        """
+        item = self.input_box.text()
+        if item.strip():
+            self.controller.add_item(item)
+            self.clear_item_text()
+            self.refresh_items()
+        else:
+            self.show_error("Item cannot be empty.")
+
+    def run(self):
+        """
+        Run the GUI event loop.
+        """
+        self.show()
