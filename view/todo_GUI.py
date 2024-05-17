@@ -57,6 +57,9 @@ class TodoGUI(QWidget):
         self.main_layout.addWidget(self.complete_button)
         self.setLayout(self.main_layout)
 
+        self.setLayout(self.main_layout)
+        self.refresh_items()
+
     def add_item(self):
         """
         Add a new item to the todo list.
@@ -95,6 +98,15 @@ class TodoGUI(QWidget):
             self.refresh_items()
         else:
             self.show_error("No item selected.")
+
+    def refresh_items(self):
+        """
+        Update the listbox values from the controller.
+        """
+        items = self.controller.show_items()
+        self.listbox.clear()
+        for item in items:
+            self.listbox.addItem(item)
 
     def show_items(self, items):
         """
