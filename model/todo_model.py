@@ -18,8 +18,7 @@ class Todo:
         """
         initiate a todo list to load from the assigned txt file
 
-        args:
-            filename (str): to read and update the todo item from the file from
+        args: filename (str): to read and update the todo item from the file from
                             the designated file location.
         """
         self.filename = filename
@@ -38,6 +37,8 @@ class Todo:
         """
         read the file and check if there are any items already in the txt,
         if so, add it to the list.
+
+        returns: list: List of todo items.
         """
         if os.path.exists(self.filename):
             with open(self.filename, 'r') as file:
@@ -49,6 +50,10 @@ class Todo:
     def check_end_of_line(item):
         """
         if the item ends with new line character, no duplicate  character added
+
+        Args: item(str): The todo item.
+
+        Returns: str: The todo item ending with a newline character.
         """
         if item.endswith('\n'):
             return item
@@ -68,6 +73,10 @@ class Todo:
         """
         This function allow user to add a new item to the list, save to the
         file by save_item
+
+        Args: item (str): The item to add.
+
+        Raises: TypeError: If the item is not a string.
         """
         if not isinstance(item, str):
             raise TypeError("Item entered must be string")
@@ -77,6 +86,8 @@ class Todo:
     def current_item(self):
         """
         This function return all current items in the todo_list
+
+        returns: list: the current todo items.
         """
         return self.todo_list
 
@@ -90,6 +101,8 @@ class Todo:
             new_item: what the user wants to update the item to.
 
         Return (boolean): true if index within the rage, false other wise
+
+        Raises: TypeError: If the new item is not a string.
         """
         if not isinstance(new_item, str):
             raise TypeError("New item must be string")
@@ -109,7 +122,9 @@ class Todo:
 
         Return:the item to be removed
 
-        Raise: IndexError if out of range.
+        Raise:
+            ValueError: If the index is not an integer.
+            IndexError: If the index is out of range.
 
         """
         if not isinstance(index, int):
@@ -118,6 +133,5 @@ class Todo:
             item_to_be_removed = self.todo_list.pop(index)
             self.save_item()
             return item_to_be_removed
-        else:
-            raise IndexError(
-                f"The index is out of range, 0 - {len(self.todo_list)}")
+        raise IndexError(
+            f"The index is out of range, 0 - {len(self.todo_list)}")

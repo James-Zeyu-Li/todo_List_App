@@ -1,3 +1,7 @@
+"""
+This is the view class which create the GUI for the todo app
+"""
+
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout,
                              QLabel, QPushButton, QLineEdit, QHBoxLayout,
                              QListWidget, QInputDialog, QMessageBox)

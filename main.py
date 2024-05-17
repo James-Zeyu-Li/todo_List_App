@@ -28,6 +28,8 @@ def main():
         print(f"TypeError occurred: {ex}")
     except IndexError as ex:
         print(f"IndexError occurred: {ex}")
+    except Exception as ex:
+        print(f"An unexpected error occurred: {ex}")
 
 
 if __name__ == "__main__":
