@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout,
                              QLabel, QPushButton, QLineEdit, QHBoxLayout,
-                             QListWidget, QInputDialog)
+                             QListWidget, QInputDialog, QMessageBox)
 
 
 class TodoGUI(QWidget):
@@ -80,6 +80,43 @@ class TodoGUI(QWidget):
                 self.refresh_items()
         else:
             self.show_error("No item selected.")
+
+
+
+    def show_items(self, items):
+        """
+        Display the list of items in the GUI.
+        """
+        self.listbox.clear()
+        for item in items:
+            self.listbox.addItem(item)
+
+    def show_error(self, message):
+        """
+        Show an error message to the user.
+        """
+        QMessageBox.critical(self, "Error", message)
+
+    def clear_item_text(self):
+        """
+        Clear the input box.
+        """
+        self.input_box.clear()
+
+    def get_item_text(self):
+        """
+        Get the text from the input box.
+
+        Returns:
+            str: Text entered by the user.
+        """
+        return self.input_box.text()
+
+    def close_application(self):
+        """
+        Close the application.
+        """
+        self.close()
 
     def run(self):
         """
