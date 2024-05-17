@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout,
-                             QLabel, QPushButton, QLineEdit)
+                             QLabel, QPushButton, QLineEdit, QHBoxLayout,
+                             QListWidget)
 
 
 class TodoGUI(QWidget):
@@ -18,6 +19,7 @@ class TodoGUI(QWidget):
         Initialize the user interface.
         """
         self.setWindowTitle("Todo List APP")
+        self.resize(300, 500)
 
         # Main layout
         self.main_layout = QVBoxLayout()
@@ -26,15 +28,25 @@ class TodoGUI(QWidget):
         self.label = QLabel("Welcome to the To Do List Application")
         self.main_layout.addWidget(self.label)
 
+        self.input_layout = QHBoxLayout()
+
         # Input box
         self.input_box = QLineEdit(self)
         self.input_box.setPlaceholderText("Enter your todo item here:")
-        self.main_layout.addWidget(self.input_box)
+        self.input_layout.addWidget(self.input_box)
 
         # Add button
         self.add_button = QPushButton("Add", self)
         self.add_button.clicked.connect(self.add_item)
-        self.main_layout.addWidget(self.add_button)
+        self.input_layout.addWidget(self.add_button)
+
+        self.main_layout.addLayout(self.input_layout)
+
+        # List box
+        self.listbox = QListWidget(self)
+        self.main_layout.addWidget(self.listbox)
+
+        self.setLayout(self.main_layout)
 
     def add_item(self):
         """
